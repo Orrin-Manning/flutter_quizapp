@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "705926124857",
+    "project_id": "quizapp-c38fc",
+    "storage_bucket": "quizapp-c38fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705926124857:android:33a06fe0f4583ef01104e8",
+        "android_client_info": {
+          "package_name": "com.snakeoilsoftware.quizapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705926124857-mgdtgbis575ghcclujdsgvihemhuirs6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.snakeoilsoftware.quizapp",
+            "certificate_hash": "5fb6acd8accadbbdbce02eba8e627542040be722"
+          }
+        },
+        {
+          "client_id": "705926124857-kjsmbgdjkt02949l52enqal84jvrn4hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuxRrWP07NV_chaghu55i15qawwArLt6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705926124857-kjsmbgdjkt02949l52enqal84jvrn4hf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "705926124857-h7f1a3p3fb345vrnnff9kijvcvuvrkvt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.snakeoilsoftware.quizapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
