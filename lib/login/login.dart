@@ -28,14 +28,17 @@ class LoginScreen extends StatelessWidget {
               ),
               Flexible(
                 child: SignInWithAppleButton(onPressed: () async {
-                  final credential = await SignInWithApple.getAppleIDCredential(
+                  await SignInWithApple.getAppleIDCredential(
                     scopes: [
                       AppleIDAuthorizationScopes.email,
                       AppleIDAuthorizationScopes.fullName,
                     ],
+                    webAuthenticationOptions: WebAuthenticationOptions(
+                      clientId: 'com.snakeoilsoftware.quizapp.signin',
+                      redirectUri: Uri.parse(
+                          'https://quizapp-c38fc.firebaseapp.com/__/auth/handler'),
+                    ),
                   );
-
-                  print(credential);
                 }),
               ),
               Flexible(
