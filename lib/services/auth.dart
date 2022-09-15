@@ -62,6 +62,12 @@ class AuthService {
         AppleIDAuthorizationScopes.fullName
       ],
       nonce: nonce,
+      webAuthenticationOptions: WebAuthenticationOptions(
+        clientId: 'com.snakeoilsoftware.quizapp.signin',
+        redirectUri: Uri.parse(
+          'https://quizapp-c38fc.firebaseapp.com/__/auth/handler',
+        ),
+      ),
     );
 
     final oAuthCredential = OAuthProvider("apple.com").credential(
