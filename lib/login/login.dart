@@ -10,48 +10,49 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const FlutterLogo(
-                size: 150,
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const FlutterLogo(
+              size: 150,
+            ),
+            Flexible(
+              child: LoginButton(
+                text: 'Sign in with Google',
+                icon: FontAwesomeIcons.google,
+                color: Colors.blue,
+                loginMethod: AuthService().googleLogin,
               ),
-              Flexible(
-                child: LoginButton(
-                  text: 'Sign in with Google',
-                  icon: FontAwesomeIcons.google,
-                  color: Colors.blue,
-                  loginMethod: AuthService().googleLogin,
-                ),
-              ),
-              Flexible(
-                child: SignInWithAppleButton(onPressed: () async {
-                  await SignInWithApple.getAppleIDCredential(
-                    scopes: [
-                      AppleIDAuthorizationScopes.email,
-                      AppleIDAuthorizationScopes.fullName,
-                    ],
-                    webAuthenticationOptions: WebAuthenticationOptions(
-                      clientId: 'com.snakeoilsoftware.quizapp.signin',
-                      redirectUri: Uri.parse(
-                        'https://quizapp-c38fc.firebaseapp.com/__/auth/handler',
-                      ),
-                    ),
-                  );
+            ),
+            Flexible(
+              child: FutureBuilder<Object>(
+                future: SignInWithApple.isAvailable(),
+                builder: ((context, snapshot) {
+                  if (snapshot.data == true) {
+                    return SignInWithAppleButton(
+                      onPressed: () {
+                        AuthService().signInWithApple();
+                      },
+                    );
+                  } else {
+                    return Container();
+                  }
                 }),
               ),
-              Flexible(
-                child: LoginButton(
-                  text: 'Continue as Guest',
-                  icon: FontAwesomeIcons.userNinja,
-                  color: Colors.deepPurple,
-                  loginMethod: AuthService().anonLogin,
-                ),
+            ),
+            Flexible(
+              child: LoginButton(
+                text: 'Continue as Guest',
+                icon: FontAwesomeIcons.userNinja,
+                color: Colors.deepPurple,
+                loginMethod: AuthService().anonLogin,
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: const Text('Login'),
       ),
