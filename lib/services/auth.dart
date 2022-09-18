@@ -41,8 +41,10 @@ class AuthService {
     const charset =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final random = Random.secure();
-    return List.generate(length, (_) => charset[random.nextInt(charset.length)])
-        .join();
+    return List.generate(
+      length,
+      (_) => charset[random.nextInt(charset.length)],
+    ).join();
   }
 
   /// Returns the sha256 hash of [input] in hex notation
@@ -64,9 +66,8 @@ class AuthService {
       nonce: nonce,
       webAuthenticationOptions: WebAuthenticationOptions(
         clientId: 'com.snakeoilsoftware.quizapp.signin',
-        redirectUri: Uri.parse(
-          'https://quizapp-c38fc.firebaseapp.com/__/auth/handler',
-        ),
+        redirectUri:
+            Uri.parse('https://quizapp-c38fc.firebaseapp.com/__/auth/handler'),
       ),
     );
 
